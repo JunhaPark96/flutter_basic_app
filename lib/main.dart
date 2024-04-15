@@ -22,16 +22,20 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold( // 발판 만들기 - 빈 도화지
       appBar: AppBar(
-        title: Text('First app'),
+        title: Text('BBANTO'),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
+        elevation: 0.0,
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Text('Hello'),
-            Text('Hello'),
-            Text('Hello')
-          ],
-        ),
+        child: Column( // column위젯은 가로축은 제한되지만, 세로축 길이는 제한이 없음
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Hello'),
+              Text('Hello'),
+              Text('Hello'),
+            ],
+          ),
       ),
     );
   }
