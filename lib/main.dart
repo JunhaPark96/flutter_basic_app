@@ -1,42 +1,57 @@
-import 'package:flutter/material.dart'; // 라이브러리 Import
+import 'package:flutter/material.dart';
+import 'package:vscode_app/main2.dart';
 
-// => : fat arrow - 호출을 의미
-  // runApp은 widget을 argument로 가져야함
-void main() => runApp(MyApp()); // custom widget을 argument로 넣어주기
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  @override
+ @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'First app',
-      theme: ThemeData(
-        primarySwatch: Colors.amber // 기본 색상 견본
-      ), // closing label: 위젯의 끝을 알려줌
-      home: MyHomePage(), // home 위젯이 앱이 실행되면 제일 먼저 보여지는 경로이기 때문에 무조건 필요
+      title: 'BBANTO',
+      home: Grade(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class Grade extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // 발판 만들기 - 빈 도화지
+    return Scaffold(
+      backgroundColor: Colors.amber[800],
+      
       appBar: AppBar(
         title: Text('BBANTO'),
+        backgroundColor: Colors.amber[700],
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
         elevation: 0.0,
       ),
-      body: Center(
-        child: Column( // column위젯은 가로축은 제한되지만, 세로축 길이는 제한이 없음
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('Hello'),
-              Text('Hello'),
-              Text('Hello'),
-            ],
-          ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          
+          children: <Widget>[
+            Text('Name',
+            style: TextStyle(
+              color: Colors.white,
+              letterSpacing: 2.0,
+              fontSize: 20.0,
+            ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('BBANTO',
+            style: TextStyle(
+              color: Colors.white,
+              letterSpacing: 2.0,
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
+            ),)
+          ],
+        ),
       ),
+
     );
   }
 }
