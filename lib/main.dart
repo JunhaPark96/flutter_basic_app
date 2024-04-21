@@ -60,9 +60,17 @@ class MyPage extends StatelessWidget {
                 backgroundImage: AssetImage('assets/kopo.jpg'),
                 backgroundColor: Colors.white,
               ),
+              otherAccountsPictures: <Widget>[
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/youngduk.jpg'),
+                  backgroundColor: Colors.white,
+                ),
+                
+              ],
               accountName: Text('KOPO'),
               accountEmail: Text('kopo@office.kopo.ac.kr'),
               // 클릭 시 기능 수행 디테일
+              // pressed는 주로 버튼에 사용, onTap은 길게누르거나 두번 터치 등의 gestureDetector, InkWell등에 사용
               onDetailsPressed: (){
                 print('Kopo friends');              
                 },
@@ -74,6 +82,40 @@ class MyPage extends StatelessWidget {
                   )
                 ),
             ),
+            // leading argument 포함 -> 좌측 정렬을 하기 위해 leading 사용
+             ListTile(
+              leading: Icon(Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('Home'),
+              onTap: (){
+                print('Home is clicked');
+              },
+              // 
+              trailing: Icon(Icons.add),
+             ),
+             ListTile(
+              leading: Icon(Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('setting'),
+              onTap: (){
+                print('Setting is clicked');
+              },
+              // 
+              trailing: Icon(Icons.add),
+             ),
+             ListTile(
+              leading: Icon(Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q&A'),
+              onTap: (){
+                print('Q&A is clicked');
+              },
+              // 
+              trailing: Icon(Icons.add),
+             )
           ],
         ), 
       ),
