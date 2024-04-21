@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main () => runApp(MyApp());
 
@@ -7,7 +9,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Appbar',
       home: MyPage(),
     );
   }
@@ -19,44 +20,27 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Snack Bar'),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.red,
         centerTitle: true,
       ),
       body: Center(
-        child: TextButton(
+        child: ElevatedButton(
+          child: Text('Toast'),
           onPressed: (){
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('hello'),
-              duration: Duration(seconds: 3),
-              action: SnackBarAction(
-                label: '닫기', onPressed: (){
-                print('스낵바 닫기 버튼');
-              }
-              ),
-              )
-              );
-            // of -> 주어진 context에서 위로 올라가면서 가장 가까운 Something(Scaffold)를 찾아서 반환.
+            fluttertoast();
           },
-
-          child: Text('ElavtedButton'),
-          
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.red),
-            foregroundColor: MaterialStateProperty.all(Colors.amber),
-            overlayColor: MaterialStateProperty.all(Colors.blueGrey),
-            padding: MaterialStateProperty.all(
-              EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-            ),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(color: Colors.cyan),
-              ),
-            ),
-            ),
-
-          ),
         ),
-      );
+      ),
+    );
   }
+}
+
+void fluttertoast() {
+  Fluttertoast.showToast(msg: 'Flutter',
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: Colors.redAccent,
+    fontSize: 25,
+    textColor: Colors.white,
+    toastLength: Toast.LENGTH_SHORT,
+  );
 }
