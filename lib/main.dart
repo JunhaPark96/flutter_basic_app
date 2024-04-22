@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main () => runApp(MyApp());
 
@@ -18,29 +16,44 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Snack Bar'),
-        backgroundColor: Colors.red,
-        centerTitle: true,
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Toast'),
-          onPressed: (){
-            fluttertoast();
-          },
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisSize: MainAxisSize.min,
+            // verticalDirection: VerticalDirection.down,
+            children: <Widget>[
+              Container(
+                width: 100,
+                // height: 100,
+                color: Colors.white,
+                child: Text('Container 1'),
+              ),
+              SizedBox(
+                // height: 30.0,
+                width: 30.0,
+              ),
+              Container(
+                width: 100,
+                // height: 100,
+                color: Colors.blue,
+                child: Text('Container 2'),
+              ),
+              Container(
+                width: 100,
+                // height: 100,
+                color: Colors.red,
+                child: Text('Container 3'),
+              ),
+              Container(
+                width: 100,
+                // height: 20,
+                color: Colors.amber,
+              )
+            ],
+          ),
         ),
-      ),
     );
   }
-}
-
-void fluttertoast() {
-  Fluttertoast.showToast(msg: 'Flutter',
-    gravity: ToastGravity.BOTTOM,
-    backgroundColor: Colors.redAccent,
-    fontSize: 25,
-    textColor: Colors.white,
-    toastLength: Toast.LENGTH_SHORT,
-  );
 }
