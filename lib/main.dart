@@ -1,61 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:vscode_app/ScreenA.dart';
+import 'package:vscode_app/ScreenB.dart';
+import 'package:vscode_app/ScreenC.dart';
 
 void main () => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  // initialRoute: 멀티페이지 이동을 할 때 화면에 제일 처음 출력될 route를 불러오는 역할 == home route
+  // routes: String, WidgetBuilder Map 형태
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstPage(),
+      // 기본 경로: '/'
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => ScreenA(),
+        '/b' : (context) => ScreenB(),
+        '/c' : (context) => ScreenC(),
+      },
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('First page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Go to the Second Page'),
-          onPressed: (){
-            // 버튼이 눌러짐과 동시에 SecondPage가 widgettree 구조에 포함됨.
-            // second page는 first page위에 쌓이게 되는 stack 구조
-            // first page의 위치를 정확히 알아야 이동을 할 수 있기 때문에 argument로 받음
-            Navigator.push(context, MaterialPageRoute(
-                // builder: 필수 인자
-                // builder: (BuildContext context) {
-                //   return SecondPage();
-                // }
-                // equals
-              builder: (context) => SecondPage() // 기본 이동 애니메이션 효과 탑재
-            ));
-          },
-        ),
-      ),
-    );
-  }
-}
 
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext ctx) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Go to the First Page'),
-          onPressed: (){
-            Navigator.pop(ctx);
-          },
-        ),
-      ),
-    );
-  }
-}
