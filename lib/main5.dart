@@ -36,6 +36,7 @@ class MyPage extends StatelessWidget {
               )
               );
             // of -> 주어진 context에서 위로 올라가면서 가장 가까운 Something(Scaffold)를 찾아서 반환.
+
           },
 
           child: Text('ElavtedButton'),

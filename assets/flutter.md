@@ -36,3 +36,12 @@ flutter는 context와 관련해서 기본적인 페이지 이동이 많이 구�
 
 - Flutter에서 Route는 단순히 스마트폰에서 보이는 하나의 페이지 또는 activity를 의미
 - Navigator는 stack 자료구조로 route를 관리하며, push와 pop 제공
+
+## 26. ScaffoldMessenger
+
+### Scaffold Deprecated
+```Scaffold.of -> ScaffoldMessenger.of``` 로 변경
+기존의 Scaffold의 SnackBar 사용은 route로 페이지를 이동했을 때, 이동한 페이지의 Scaffold를 사용하게 됨.
+=> 즉, SnackBar를 유지 못함.
+
+따라서 하나의 root ScaffoldMessenger로 모든 Decendent를 관리하여 모든 SnackBar를 수신할 수 있게 됨.
