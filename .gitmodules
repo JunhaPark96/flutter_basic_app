@@ -1,0 +1,3 @@
+[submodule "vscode_app"]
+	path = vscode_app
+	url = /Users/junha/vscode_app/vscode_app
