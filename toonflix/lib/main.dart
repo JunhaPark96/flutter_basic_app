@@ -118,6 +118,7 @@ class App extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.all(30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,11 +152,19 @@ class App extends StatelessWidget {
                                     color: Colors.white,
                                     fontSize: 20,
                                   ),
-                                )
+                                ),
                               ],
                             )
                           ],
-                        )
+                        ),
+                        Transform.scale(
+                          scale: 2,
+                          child: Icon(
+                            Icons.euro_rounded,
+                            color: Colors.white,
+                            size: 98,
+                          ),
+                        ),
                       ],
                     ),
                   )),
