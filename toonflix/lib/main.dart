@@ -11,21 +11,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // flutter Rule: 모든 화면은 scaffold가 필요 함.
       home: Scaffold(
-        backgroundColor: const Color(0xFF181818),
+        backgroundColor: Color(0xFF181818),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Column(
@@ -50,20 +50,20 @@ class App extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 50,
                 ),
-                const Text(
+                Text(
                   'Total Balance',
                   style: TextStyle(
                     fontSize: 22,
                     color: Color.fromRGBO(255, 255, 255, 0.788),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-                const Text(
+                Text(
                   '\$5 194 482',
                   style: TextStyle(
                     fontSize: 42,
@@ -71,10 +71,10 @@ class App extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Button(
@@ -87,10 +87,10 @@ class App extends StatelessWidget {
                         textColor: Colors.white),
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 100,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -109,38 +109,32 @@ class App extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, 0),
-                  child: const CurrencyCard(
-                    name: 'Euro',
-                    code: 'Eur',
-                    amount: '6 428',
-                    icon: Icons.euro_rounded,
-                    isInverted: false,
-                  ),
+                CurrencyCard(
+                  name: 'Euro',
+                  code: 'Eur',
+                  amount: '6 428',
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                  cardOffset: 0,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -20),
-                  child: const CurrencyCard(
-                    name: 'Bitcoin',
-                    code: 'BTC',
-                    amount: '9 785',
-                    icon: Icons.currency_bitcoin,
-                    isInverted: true,
-                  ),
+                CurrencyCard(
+                  name: 'Bitcoin',
+                  code: 'BTC',
+                  amount: '9 785',
+                  icon: Icons.currency_bitcoin,
+                  isInverted: true,
+                  cardOffset: -20,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -40),
-                  child: const CurrencyCard(
-                    name: 'Dollar',
-                    code: 'USD',
-                    amount: '28 491',
-                    icon: Icons.attach_money_outlined,
-                    isInverted: false,
-                  ),
+                CurrencyCard(
+                  name: 'Dollar',
+                  code: 'USD',
+                  amount: '28 491',
+                  icon: Icons.attach_money_outlined,
+                  isInverted: false,
+                  cardOffset: -40,
                 ),
               ],
             ),
