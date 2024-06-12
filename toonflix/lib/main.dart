@@ -111,16 +111,17 @@ class App extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                  clipBehavior: Clip.hardEdge, //overflow된 부분을 처리할 지 결정
                   decoration: BoxDecoration(
                     color: const Color(0xFF1F2123),
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(30),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
+                        const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
@@ -158,13 +159,16 @@ class App extends StatelessWidget {
                           ],
                         ),
                         Transform.scale(
-                          scale: 2,
-                          child: Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 98,
+                          scale: 2.2,
+                          child: Transform.translate(
+                            offset: const Offset(-5, 12), // x,y 좌표 offset 설정
+                            child: const Icon(
+                              Icons.euro_rounded,
+                              color: Colors.white,
+                              size: 88,
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   )),
