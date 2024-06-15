@@ -12,6 +12,14 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool showTitle = true;
+
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,13 +31,16 @@ class _AppState extends State<App> {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        backgroundColor: Color(0xFFF4EDDB),
+      home: Scaffold(
+        backgroundColor: const Color(0xFFF4EDDB),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyLargeTitle(),
+              showTitle ? const MyLargeTitle() : const Text('nothing'),
+              IconButton(
+                  onPressed: toggleTitle,
+                  icon: const Icon(Icons.remove_red_eye)),
             ],
           ),
         ),
@@ -38,13 +49,34 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
 
   @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    // build 이전 호출되는 메소드. 변수를 초기화 하고, API 업데이트를 가져올 수 있게 해줌
+    super.initState();
+    print('hello');
+  }
+
+  // 위젯이 위젯트리에서 제거되기전에 취소.
+  @override
+  void dispose() {
+    // 위젯이 위젯트리에서 제거될 때 실행
+    super.dispose();
+    print('dispose');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('build');
     return Text(
       'My Large Title',
       style: TextStyle(
