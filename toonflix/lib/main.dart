@@ -12,10 +12,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void onClicked() {
-    counter = counter + 1;
+    // setState: State에게 state를 알려주는 함수. build 메소드를 호출
+    setState(() {
+      numbers.add(numbers.length);
+    });
   }
 
   @override
@@ -32,10 +35,7 @@ class _AppState extends State<App> {
                 'Click Count',
                 style: TextStyle(fontSize: 30),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(fontSize: 30),
-              ),
+              for (var n in numbers) Text('$n'),
               IconButton(
                   iconSize: 40,
                   onPressed: onClicked,
