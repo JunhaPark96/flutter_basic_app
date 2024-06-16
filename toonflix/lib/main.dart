@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/screens/main_screen.dart';
 
 void main() {
   runApp(const App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key}); // super class 인 stateltessWidget에 key를 보내는 역할
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSwatch(backgroundColor: const Color(0xFFE7626C)),
-        textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            color: Color(0xFF232B55),
-          ),
-        ),
-        cardColor: const Color(0xFFF4EDDB),
-      ),
-      home: const HomeScreen(),
+      home: MainScreen(),
     );
   }
 }
