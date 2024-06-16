@@ -19,7 +19,7 @@ class Webtoon extends StatelessWidget {
               thumb: thumb,
               id: id,
             ),
-            // fullscreenDialog: true,
+            fullscreenDialog: true,
           ),
         );
       }, // onTapUp + onTapDown
