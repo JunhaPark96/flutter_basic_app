@@ -58,7 +58,10 @@ class MainScreen extends StatelessWidget {
         // 동적으로 item 생성. 미리 만들어 두지 않음.
         var webtoon = snapshot.data![index];
         return Webtoon(
-            title: webtoon.title, thumb: webtoon.thumb, id: webtoon.id);
+          title: webtoon.title,
+          thumb: webtoon.thumb,
+          id: webtoon.id,
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 40,
