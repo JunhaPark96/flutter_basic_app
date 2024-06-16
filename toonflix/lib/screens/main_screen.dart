@@ -2,33 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon.dart';
 import 'package:toonflix/services/api_service.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatelessWidget {
+  Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  List<WebtoonModel> webtoons = [];
-  bool isLoading = true;
-
-  void waitForWebToons() async {
-    webtoons = await ApiService.getTodaysToons();
-    isLoading = false;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    waitForWebToons();
-  }
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     print(webtoons);
-    print(isLoading);
+    // print(isLoading);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -42,6 +24,15 @@ class _MainScreenState extends State<MainScreen> {
             fontWeight: FontWeight.w400,
           ),
         ),
+      ),
+      body: FutureBuilder(
+        future: webtoons, // UI그려주는 builder, 자체 await가능
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const Text("There is data");
+          }
+          return const Text('Loading..');
+        },
       ),
     );
   }
